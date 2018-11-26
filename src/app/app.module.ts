@@ -10,10 +10,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LiveService } from './live.service';
 
+import { blockreducer } from './reducers/block.reducer';
+import { StoreModule } from '@ngrx/store';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    StoreModule.forRoot({
+      blocks: blockreducer
+    })],
   providers: [
     StatusBar,
     LiveService,

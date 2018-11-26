@@ -4,13 +4,18 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { LatestBlocksComponent } from './../latest-blocks/latest-blocks.component';
+import { BlockItemComponent } from './../block-item/block-item.component';
 import { HomePage } from './home.page';
+
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    MomentModule,
     RouterModule.forChild([
       {
         path: '',
@@ -18,6 +23,10 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    LatestBlocksComponent,
+    BlockItemComponent,
+  ]
 })
-export class HomePageModule {}
+export class HomePageModule { }

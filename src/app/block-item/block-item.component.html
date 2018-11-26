@@ -1,0 +1,13 @@
+<ion-card>
+    <ion-row>
+        <ion-col>
+            {{block.number}}
+        </ion-col>
+        <ion-col>
+            {{block.hash}}
+        </ion-col>
+        <ion-col>
+            {{ block.time_stamp * 1000 | amTimeAgo }}
+        </ion-col>
+    </ion-row>
+</ion-card>
