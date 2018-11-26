@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { Block } from './../models/block.model';
-import { AppState } from './../app.state';
+import { Block } from './../../models/block.model';
+import { AppState } from './../../app.state';
 
 @Component({
   selector: 'latest-blocks',

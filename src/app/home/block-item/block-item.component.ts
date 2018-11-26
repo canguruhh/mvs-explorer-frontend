@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Block } from '../models/block.model'
+import { Block } from './../../models/block.model'
 
 @Component({
   selector: 'block-item',
