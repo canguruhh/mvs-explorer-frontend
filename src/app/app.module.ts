@@ -13,12 +13,14 @@ import { LiveService } from './live.service';
 import { blockreducer } from './reducers/block.reducer';
 import { StoreModule } from '@ngrx/store';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     StoreModule.forRoot({
