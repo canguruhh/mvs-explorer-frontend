@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map'
 import { Observable } from 'rxjs';
 
 import { Tickers, Ticker, TickersList } from './../../models/ticker.model'
+import { Avatar } from './../../models/avatar.model'
 
 interface ExplorerResponseStatus {
   success: boolean
@@ -33,5 +34,9 @@ export class ExplorerService {
 
   getTickers(): Observable<TickersList> {
     return this.get('pricing/tickers')
+  }
+  
+  getAvatars(): Observable<Avatar[]> {
+    return this.get('avatars').map(response=>response.result)
   }
 }
