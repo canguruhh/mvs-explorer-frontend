@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ExplorerService } from './../services/explorer/explorer.service';
 
+import { Tickers, Ticker, TickersList } from './../models/ticker.model'
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +11,7 @@ import { ExplorerService } from './../services/explorer/explorer.service';
 export class HomePage {
 
   constructor(private explorer : ExplorerService){
-    explorer.getHeight().subscribe((response: number)=>{
+    explorer.getTickers().subscribe((response: TickersList)=>{
       console.log(response)
     })
   }

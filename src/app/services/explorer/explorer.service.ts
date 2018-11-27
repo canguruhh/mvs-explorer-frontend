@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs';
+
+import { Tickers, Ticker, TickersList } from './../../models/ticker.model'
 
 interface ExplorerResponseStatus {
   success: boolean
   message?: string
 }
 
+
 export interface ExplorerResponse<T> {
   status: ExplorerResponseStatus;
   result: T;
 }
-
-export interface ExplorerHeightResponse extends ExplorerResponse<number>
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,15 @@ export class ExplorerService {
 
   constructor(private http: HttpClient) { }
 
-  getHeight : number(){
-    return this.http.get<ExplorerResponse<number>("https://explorer.mvs.org/api/height").map(response=>response.result)
+  get(endpoint) {
+    return this.http.get<ExplorerResponse<any>>("https://explorer.mvs.org/api/" + endpoint).map(response => response.result)
+  }
+
+  getHeight(): Observable<number> {
+    return this.get('height')
+  }
+
+  getTickers(): Observable<TickersList> {
+    return this.get('pricing/tickers')
   }
 }
