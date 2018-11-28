@@ -3,6 +3,7 @@ import { ExplorerService } from './../services/explorer/explorer.service';
 
 import { Tickers, Ticker, TickersList } from './../models/ticker.model'
 import { Avatar } from './../models/avatar.model'
+import { Suggestions } from './../models/suggestion.model'
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -21,7 +22,7 @@ export class HomePage {
     explorer.getAvatars().subscribe((response: Avatar[])=>{
       console.log(response)
     })
-    explorer.getSuggestions('lau', 10).subscribe((response: any)=>{
+    explorer.getSuggestions('lau', 10).subscribe((response: Suggestions)=>{
       console.log(response)
     })
   }

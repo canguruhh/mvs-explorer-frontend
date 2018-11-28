@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Tickers, Ticker, TickersList } from './../../models/ticker.model'
 import { Avatar } from './../../models/avatar.model'
+import { Suggestions } from './../../models/suggestion.model'
 
 interface ExplorerResponseStatus {
   success: boolean
@@ -40,7 +41,7 @@ export class ExplorerService {
     return this.get('avatars').map(response=>response.result)
   }
 
-  getSuggestions(search, limit): Observable<any> {
+  getSuggestions(search, limit): Observable<Suggestions> {
     return this.get('suggest/all/' + search + '?limit=' + (limit ? limit : '10')).map(response=>response)
   }
 
