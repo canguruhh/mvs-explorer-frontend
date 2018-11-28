@@ -12,6 +12,7 @@ import { MatAutocompleteModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MomentModule } from 'ngx-moment';
+import { TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { MomentModule } from 'ngx-moment';
     MomentModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    TranslateModule,
     RouterModule.forChild([
       {
         path: '',
