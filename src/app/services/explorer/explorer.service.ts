@@ -35,8 +35,13 @@ export class ExplorerService {
   getTickers(): Observable<TickersList> {
     return this.get('pricing/tickers')
   }
-  
+
   getAvatars(): Observable<Avatar[]> {
     return this.get('avatars').map(response=>response.result)
   }
+
+  getSuggestions(search, limit): Observable<any> {
+    return this.get('suggest/all/' + search + '?limit=' + (limit ? limit : '10')).map(response=>response)
+  }
+
 }

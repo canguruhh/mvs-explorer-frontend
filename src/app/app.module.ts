@@ -14,6 +14,7 @@ import { blockreducer } from './reducers/block.reducer';
 import { StoreModule } from '@ngrx/store';
 
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     StoreModule.forRoot({
       blocks: blockreducer
-    })],
+    }),
+    BrowserAnimationsModule],
   providers: [
     StatusBar,
     LiveService,
