@@ -2,24 +2,32 @@
   searchbar works!
 
   <form class="example-form">
-    <input type="text" placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" aria-label="Number" matInput [matAutocomplete]="auto">
+    <!--input type="text" placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" matInput [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
+      <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion">
+        <ion-icon name="person-add"></ion-icon>
+        {{suggestion.name}}
+      </mat-option>
+    </mat-autocomplete-->
+
+    <!--input type="text" placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion.name">
+        {{suggestion.name}}
+      </mat-option>
+    </mat-autocomplete-->
+
+    <input matInput placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" aria-label="Suggestions" [matAutocomplete]="auto" [formControl]="suggestionsCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion.name">
+        <span>{{suggestion.name}}</span> |
+        <small>Height: {{suggestion.height}}</small>
       </mat-option>
     </mat-autocomplete>
-  </form>
 
-  <!--form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of options" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form-->
+    {{filteredSuggestions}}
+
+  </form>
 
 	<!--md-autocomplete flex
 		md-hide-autocomplete-on-enter
