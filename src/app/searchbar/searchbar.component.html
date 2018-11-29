@@ -1,81 +1,10 @@
 <div class="searchbar-container">
-  searchbar works!
-
   <form class="example-form">
-    <!--input type="text" placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" matInput [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion">
-        <ion-icon name="person-add"></ion-icon>
-        {{suggestion.name}}
-      </mat-option>
-    </mat-autocomplete-->
-
-    <!--input type="text" placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion.name">
-        {{suggestion.name}}
-      </mat-option>
-    </mat-autocomplete-->
-
     <input matInput placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" aria-label="Suggestions" [matAutocomplete]="auto" [formControl]="suggestionsCtrl">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion.name">
+      <mat-option *ngFor="let suggestion of suggestions " [value]="suggestion.name">
         <span>{{suggestion.name}}</span> |
         <small>Height: {{suggestion.height}}</small>
       </mat-option>
     </mat-autocomplete>
-
-    {{filteredSuggestions}}
-
   </form>
-
-	<!--md-autocomplete flex
-		md-hide-autocomplete-on-enter
-		md-no-cache="noCache"
-		md-selected-item="selectedItem"
-		md-search-text-change="searchTextChange(searchText)"
-		md-search-text="searchText"
-		ng-enter="presEnterSearch(searchText)"
-		md-selected-item-change="selectedItemChange(item)"
-		md-items="item in querySearch(searchText)"
-		md-item-text="item.name"
-		md-min-length="0"
-		md-delay="500"
-		placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}"
-		md-clear-button="true"
-		md-menu-class="autocomplete-custom-template">
-		<md-item-template>
-			<a href="{{item.url}}">
-				<div class="item-title overflow">
-					<img ng-if="item.type == 'asset' || item.type == 'avatar' || item.type == 'mit'" check-image ng-src="../img/assets/{{item.icon}}.png">
-					<span ng-if="item.type == 'tx'" ><i class="fas fa-exchange-alt"></i></span>
-					<span ng-if="item.type == 'blockHeight' || item.type == 'blockHash'"><i class="fas fa-cube"></i></span>
-					<span ng-if="item.type == 'address'"><i class="far fa-address-card"></i></span>
-					<span> {{item.name}} </span>
-				</div>
-				<div class="item-metadata overflow">
-					<span>
-						<strong>
-							<span ng-if="item.type == 'asset'">{{'SUGGESTION.TYPE_ASSET' | translate}}</span>
-							<span ng-if="item.type == 'avatar'">{{'SUGGESTION.TYPE_AVATAR' | translate}}</span>
-							<span ng-if="item.type == 'tx'" >{{'SUGGESTION.TYPE_TX' | translate}}</span>
-							<span ng-if="item.type == 'blockHeight'" >{{'SUGGESTION.TYPE_BLOCK_HEIGHT' | translate}}</span>
-							<span ng-if="item.type == 'blockHash'" >{{'SUGGESTION.TYPE_BLOCK_HASH' | translate}}</span>
-							<span ng-if="item.type == 'address'" >{{'SUGGESTION.TYPE_ADDRESS' | translate}}</span>
-							<span ng-if="item.type == 'mit'" >{{'SUGGESTION.TYPE_MIT' | translate}}</span>
-						</strong>
-					</span>
-					<span ng-if="item.nbrtx">
-						({{item.nbrtx}} transactions)
-					</span>
-					<span ng-if="item.height">
-						(Block {{item.height}})
-					</span>
-				</div>
-			</a>
-		</md-item-template>
-		<md-not-found>
-				{{'MESSAGES.ERROR_SEARCH_NOT_FOUND' | translate}}
-		</md-not-found>
-	</md-autocomplete-->
-</div>
