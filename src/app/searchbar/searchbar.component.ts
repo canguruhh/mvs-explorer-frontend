@@ -40,7 +40,7 @@ export class SearchbarComponent implements OnInit {
           distinctUntilChanged(),
           switchMap(query => {
             console.log(query)
-            return (query && query.length >= 3) ? this.search(query) : this.initialSuggestions
+            return (query && query.length >= 3) ? this.search(query) : this.initialSuggestions.slice()
           })
         );
     //  debounceTime(500),
@@ -195,8 +195,9 @@ export class SearchbarComponent implements OnInit {
               type: 'mit',
               icon: 'default_mit'
           };
-
-
+      })
+  }
+}
   /*
 
   this.presEnterSearch = presEnterSearch;
@@ -462,6 +463,4 @@ export class SearchbarComponent implements OnInit {
           };
 
 
-  */
-
-}
+*/
