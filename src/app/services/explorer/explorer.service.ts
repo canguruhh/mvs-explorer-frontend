@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map'
 import { Observable } from 'rxjs';
 
 import { Tickers, Ticker, TickersList } from './../../models/ticker.model'
+import { Transaction } from './../../models/transaction.model'
 import { Avatar } from './../../models/avatar.model'
 import { Suggestions } from './../../models/suggestion.model'
 
@@ -35,6 +36,10 @@ export class ExplorerService {
 
   getTickers(): Observable<TickersList> {
     return this.get('pricing/tickers')
+  }
+
+  getTransactions(last_known?): Observable<Transaction[]> {
+    return this.get('v2/txs'+((last_known)?'?last_known='+last_known:''))
   }
 
   getAvatars(): Observable<Avatar[]> {

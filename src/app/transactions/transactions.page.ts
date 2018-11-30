@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ExplorerService } from './../services/explorer/explorer.service';
+import { Transaction } from './../models/transaction.model'
 
 @Component({
   selector: 'app-transactions',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private explorer: ExplorerService
+  ) { }
 
   ngOnInit() {
+    this.explorer.getTransactions("5bab472f91f5cfce13a41e96").subscribe((response: Transaction[])=>{
+      console.log(response)
+    })
   }
 
 }
