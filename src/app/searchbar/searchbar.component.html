@@ -1,10 +1,38 @@
 <div class="searchbar-container">
-  <form class="example-form">
-    <input matInput placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" aria-label="Suggestions" [matAutocomplete]="auto" [formControl]="suggestionsCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let suggestion of suggestions " [value]="suggestion.name">
-        <span>{{suggestion.name}}</span> |
-        <small>Height: {{suggestion.height}}</small>
-      </mat-option>
-    </mat-autocomplete>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="{{'EXPLORER.SEARCH_LABEL' | translate}}" aria-label="Suggestions" [matAutocomplete]="auto" [formControl]="suggestionsCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion.name">
+          <a href="{{suggestion.url}}">
+            <span>
+              <img class="icon" *ngIf="suggestion.type == 'asset' || suggestion.type == 'avatar' || suggestion.type == 'mit'" [src]="'assets/icon/' + suggestion.icon + '.png'">
+              <span *ngIf="suggestion.type == 'tx'" ><ion-icon name="swap"></ion-icon></span>
+              <span *ngIf="suggestion.type == 'blockHeight' || suggestion.type == 'blockHash'"><ion-icon name="cube"></ion-icon></span>
+              <span *ngIf="suggestion.type == 'address'"><ion-icon name="bookmark"></ion-icon></span>
+              <span>{{suggestion.name}}</span>
+            </span>
+            <br>
+            <small>
+              <strong>
+                <span *ngIf="suggestion.type == 'asset'">{{'SUGGESTION.TYPE_ASSET' | translate}}</span>
+                <span *ngIf="suggestion.type == 'avatar'">{{'SUGGESTION.TYPE_AVATAR' | translate}}</span>
+                <span *ngIf="suggestion.type == 'tx'" >{{'SUGGESTION.TYPE_TX' | translate}}</span>
+                <span *ngIf="suggestion.type == 'blockHeight'" >{{'SUGGESTION.TYPE_BLOCK_HEIGHT' | translate}}</span>
+                <span *ngIf="suggestion.type == 'blockHash'" >{{'SUGGESTION.TYPE_BLOCK_HASH' | translate}}</span>
+                <span *ngIf="suggestion.type == 'address'" >{{'SUGGESTION.TYPE_ADDRESS' | translate}}</span>
+                <span *ngIf="suggestion.type == 'mit'" >{{'SUGGESTION.TYPE_MIT' | translate}}</span>
+              </strong>
+              <span *ngIf="suggestion.nbrtx">
+                ({{suggestion.nbrtx}} transactions)
+              </span>
+              <span *ngIf="suggestion.height">
+                (Block {{suggestion.height}})
+              </span>
+            </small>
+          </a>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
   </form>
+</div>

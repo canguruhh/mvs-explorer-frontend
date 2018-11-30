@@ -8,7 +8,9 @@ import { LatestBlocksComponent } from './latest-blocks/latest-blocks.component';
 import { BlockItemComponent } from './block-item/block-item.component';
 import { SearchbarComponent } from './../searchbar/searchbar.component';
 import { HomePage } from './home.page';
+import { MatInputModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MomentModule } from 'ngx-moment';
@@ -20,7 +22,9 @@ import { TranslateModule} from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     MomentModule,
+    MatInputModule,
     MatAutocompleteModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     TranslateModule,
     RouterModule.forChild([

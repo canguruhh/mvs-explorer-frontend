@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ExplorerService } from './../services/explorer/explorer.service';
 import { Suggestions } from './../models/suggestion.model';
@@ -9,7 +10,7 @@ import { FormControl } from '@angular/forms';
 import { catchError, map, tap, startWith, switchMap, debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
 
 export interface SuggestionListItem {
-  name: string;
+  name: any;
   url: string;
   type: string;
   icon: string;
@@ -25,7 +26,8 @@ export interface SuggestionListItem {
 export class SearchbarComponent implements OnInit {
 
   suggestionsCtrl = new FormControl();
-  suggestions: [SuggestionListItem] = [];
+  suggestions: [SuggestionListItem];
+  private initialSuggestions: any;
 
   constructor(private explorer: ExplorerService, public translate: TranslateService) {
 
