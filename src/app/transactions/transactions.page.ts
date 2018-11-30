@@ -16,10 +16,19 @@ export class TransactionsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.explorer.getTransactions("5bab472f91f5cfce13a41e96").subscribe((response: Transaction[])=>{
-      console.log(response)
-      this.transactions = response
+    this.explorer.getTransactions().subscribe((response: Transaction[])=>{
+      this.transactions = this.transactions.concat(response)
     })
   }
 
+  doInfinite(infiniteScrollEvent) {
+    this.explorer.getTransactions(this.transactions[this.transactions.length-1]._id).toPromise().then((response: Transaction[]) => {
+      if(response) {
+        this.transactions = this.transactions.concat(response)
+        infiniteScrollEvent.target.complete();
+      } else {
+        infiniteScrollEvent.enable(false);
+      }
+    });
+  }
 }
