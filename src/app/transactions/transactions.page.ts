@@ -9,6 +9,8 @@ import { Transaction } from './../models/transaction.model'
 })
 export class TransactionsPage implements OnInit {
 
+  transactions: any = []
+
   constructor(
     private explorer: ExplorerService
   ) { }
@@ -16,6 +18,7 @@ export class TransactionsPage implements OnInit {
   ngOnInit() {
     this.explorer.getTransactions("5bab472f91f5cfce13a41e96").subscribe((response: Transaction[])=>{
       console.log(response)
+      this.transactions = response
     })
   }
 

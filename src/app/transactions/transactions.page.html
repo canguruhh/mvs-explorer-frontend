@@ -6,4 +6,6 @@
 
 <ion-content padding>
 
+  <transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></transaction-item>
+
 </ion-content>
