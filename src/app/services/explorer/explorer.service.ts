@@ -43,7 +43,7 @@ export class ExplorerService {
   }
 
   getAvatars(): Observable<Avatar[]> {
-    return this.get('avatars').map(response=>response.result)
+    return this.get('v2/avatars')
   }
 
   getSuggestions(search, limit): Observable<Suggestions> {
