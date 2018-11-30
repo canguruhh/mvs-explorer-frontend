@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { LatestBlocksComponent } from './latest-blocks/latest-blocks.component';
+import { LatestTransactionsComponent } from './latest-transactions/latest-transactions.component';
 import { BlockItemComponent } from './block-item/block-item.component';
+import { TransactionItemComponent } from './transaction-item/transaction-item.component';
 import { SearchbarComponent } from './../searchbar/searchbar.component';
 import { HomePage } from './home.page';
 import { MatInputModule } from '@angular/material';
@@ -37,7 +39,9 @@ import { TranslateModule} from '@ngx-translate/core';
   declarations: [
     HomePage,
     LatestBlocksComponent,
+    LatestTransactionsComponent,
     BlockItemComponent,
+    TransactionItemComponent,
     SearchbarComponent
   ]
 })

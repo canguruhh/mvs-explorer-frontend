@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LiveService } from './live.service';
 
 import { blockreducer } from './reducers/block.reducer';
+import { transactionreducer } from './reducers/transaction.reducer';
 import { StoreModule } from '@ngrx/store';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +36,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     StoreModule.forRoot({
-      blocks: blockreducer
+      blocks: blockreducer,
+      transactions: transactionreducer
     }),
     BrowserAnimationsModule],
     providers: [

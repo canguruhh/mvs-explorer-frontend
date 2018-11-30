@@ -5,9 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
 import * as BlockActions from './actions/block.actions';
+import * as TransactionActions from './actions/transaction.actions';
 import { Observable } from 'rxjs/Observable';
 
 import { Block } from './models/block.model'
+import { Transaction } from './models/transaction.model'
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +22,18 @@ export class LiveService {
 
       console.log('connection open', connection)
 
-      session.subscribe('public.transactions', (txs) => {
-        // console.log('txs', txs)
+      session.subscribe('public.transactions', ([txs, action]) => {
+        console.log(txs)
+        switch(action){
+          case 'i':
+            this.replaceTransactions(txs)
+            break
+          case 'u':
+            txs.forEach(tx=>this.addTransaction(tx))
+            break
+          default:
+            console.log('unknown live action on type block: ', action)
+        }
       });
 
       session.subscribe('public.blocks', ([blocks, action]) => {
@@ -46,5 +58,12 @@ export class LiveService {
   }
   replaceBlocks(blocks: Block[]) {
     this.store.dispatch(new BlockActions.ReplaceBlocks(blocks) )
+  }
+
+  addTransaction(transaction: Transaction) {
+    this.store.dispatch(new TransactionActions.AddTransaction(transaction) )
+  }
+  replaceTransactions(transactions: Transaction[]) {
+    this.store.dispatch(new TransactionActions.ReplaceTransactions(transactions) )
   }
 }
