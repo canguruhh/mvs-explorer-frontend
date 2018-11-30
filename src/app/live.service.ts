@@ -21,7 +21,7 @@ export class LiveService {
       console.log('connection open', connection)
 
       session.subscribe('public.transactions', (txs) => {
-        console.log('txs', txs)
+        // console.log('txs', txs)
       });
 
       session.subscribe('public.blocks', ([blocks, action]) => {
