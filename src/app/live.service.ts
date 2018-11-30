@@ -15,7 +15,7 @@ import { Block } from './models/block.model'
 export class LiveService {
 
   constructor(private store: Store<AppState>) {
-    var connection = new Autobahn.Connection({ url: 'wss://explorer.mvs.org/ws', realm: 'realm1' });
+    var connection = new Autobahn.Connection({ url: 'wss://explorer-testnet.mvs.org/ws', realm: 'realm1' });
     connection.onopen = (session) => {
 
       console.log('connection open', connection)

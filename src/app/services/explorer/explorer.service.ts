@@ -26,7 +26,7 @@ export class ExplorerService {
   constructor(private http: HttpClient) { }
 
   get(endpoint) {
-    return this.http.get<ExplorerResponse<any>>("https://explorer.mvs.org/api/" + endpoint).map(response => response.result)
+    return this.http.get<ExplorerResponse<any>>("https://explorer-testnet.mvs.org/api/" + endpoint).map(response => response.result)
   }
 
   getHeight(): Observable<number> {
