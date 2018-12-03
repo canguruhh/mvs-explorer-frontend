@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Tickers, Ticker, TickersList } from './../../models/ticker.model'
 import { Transaction } from './../../models/transaction.model'
+import { Mst } from './../../models/mst.model'
 import { Block } from './../../models/block.model'
 import { Avatar } from './../../models/avatar.model'
 import { Suggestions } from './../../models/suggestion.model'
@@ -45,6 +46,10 @@ export class ExplorerService {
 
   getBlocks(last_known?): Observable<Block[]> {
     return this.get('v2/blocks'+((last_known)?'?last_known='+last_known:''))
+  }
+
+  getMsts(): Observable<Mst[]> {
+    return this.get('assets')
   }
 
   getAvatars(last_known?): Observable<Avatar[]> {

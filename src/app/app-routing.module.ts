@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'avatars', loadChildren: './avatars/avatars.module#AvatarsPageModule' },
   { path: 'txs', loadChildren: './transactions/transactions.module#TransactionsPageModule' },
   { path: 'blocks', loadChildren: './blocks/blocks.module#BlocksPageModule' },
+  { path: 'msts', loadChildren: './msts/msts.module#MstsPageModule' },
+  { path: 'assets', redirectTo: 'msts', pathMatch: 'full' },
 ];
 
 @NgModule({
