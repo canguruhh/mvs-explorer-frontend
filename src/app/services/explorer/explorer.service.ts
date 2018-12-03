@@ -47,8 +47,8 @@ export class ExplorerService {
     return this.get('v2/blocks'+((last_known)?'?last_known='+last_known:''))
   }
 
-  getAvatars(): Observable<Avatar[]> {
-    return this.get('v2/avatars')
+  getAvatars(last_known?): Observable<Avatar[]> {
+    return this.get('v2/avatars'+((last_known)?'?last_known='+last_known:''))
   }
 
   getSuggestions(search, limit): Observable<Suggestions> {
