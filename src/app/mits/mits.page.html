@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>mits</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <mit-item *ngFor="let mit of mits" [mit]="mit"></mit-item>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

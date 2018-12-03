@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Tickers, Ticker, TickersList } from './../../models/ticker.model'
 import { Transaction } from './../../models/transaction.model'
 import { Mst } from './../../models/mst.model'
+import { Mit } from './../../models/mit.model'
 import { Block } from './../../models/block.model'
 import { Avatar } from './../../models/avatar.model'
 import { Suggestions } from './../../models/suggestion.model'
@@ -50,6 +51,10 @@ export class ExplorerService {
 
   getMsts(): Observable<Mst[]> {
     return this.get('assets')
+  }
+
+  getMits(last_known?): Observable<Mit[]> {
+    return this.get('v2/mits'+((last_known)?'?last_known='+last_known:''))
   }
 
   getAvatars(last_known?): Observable<Avatar[]> {
