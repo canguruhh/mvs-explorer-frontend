@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>blocks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <block-item *ngFor="let block of blocks" [block]="block"></block-item>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
