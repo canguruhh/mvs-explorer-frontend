@@ -1,0 +1,16 @@
+<ion-card>
+  <ion-row>
+    <ion-col>
+      {{certificate.attachment.symbol}}
+    </ion-col>
+    <ion-col>
+      {{certificate.attachment.cert}}
+    </ion-col>
+    <ion-col>
+      {{certificate.attachment.to_did}}
+    </ion-col>
+    <ion-col>
+      {{certificate.confirmed_at * 1000 | date:'medium'}}
+    </ion-col>
+  </ion-row>
+</ion-card>

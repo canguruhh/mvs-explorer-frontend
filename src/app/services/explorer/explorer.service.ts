@@ -9,6 +9,7 @@ import { Mst } from './../../models/mst.model'
 import { Mit } from './../../models/mit.model'
 import { Block } from './../../models/block.model'
 import { Avatar } from './../../models/avatar.model'
+import { Certificate } from './../../models/certificate.model'
 import { Suggestions } from './../../models/suggestion.model'
 
 interface ExplorerResponseStatus {
@@ -59,6 +60,10 @@ export class ExplorerService {
 
   getAvatars(last_known?): Observable<Avatar[]> {
     return this.get('v2/avatars'+((last_known)?'?last_known='+last_known:''))
+  }
+
+  getCertificates(last_known?): Observable<Certificate[]> {
+    return this.get('v2/certs'+((last_known)?'?last_known='+last_known:''))
   }
 
   getSuggestions(search, limit): Observable<Suggestions> {
