@@ -13,6 +13,7 @@ export class TransactionItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.transaction)
   }
 
 }
