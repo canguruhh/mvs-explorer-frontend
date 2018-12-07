@@ -1,10 +1,15 @@
 <ion-card>
   <ion-row>
     <ion-col>
-      {{transaction.hash}}
+      {{ 'EXPLORER.TRANSACTION_HASH' | translate }}: {{transaction.hash}}
     </ion-col>
     <ion-col>
-        {{ transaction.confirmed_at * 1000 | amTimeAgo }}
+      <div *ngIf="transaction.height">{{ 'EXPLORER.BLOCK' | translate }}: {{transaction.height}}</div>
+      <div *ngIf="!transaction.height">{{ 'EXPLORER.UNCONFIRMED' | translate }}</div>
+    </ion-col>
+    <ion-col>
+      <div *ngIf="transaction.confirmed_at">{{transaction.confirmed_at * 1000 | timeago:live}}</div>
+      <div *ngIf="!transaction.confirmed_at">{{transaction.received_at * 1000 | timeago:live}}</div>
     </ion-col>
   </ion-row>
 </ion-card>

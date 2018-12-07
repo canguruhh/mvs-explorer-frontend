@@ -6,9 +6,9 @@ export function transactionreducer(state: Transaction[] = [], action: Transactio
 
   switch (action.type) {
     case TransactionActions.ADD_TRANSACTION:
-      return [action.payload, ...state].sort((a, b) => b.height - a.height).slice(0, 10);
+      return [action.payload, ...state].sort((a, b) => (b.confirmed_at ? b.confirmed_at : b.received_at) - (a.confirmed_at ? a.confirmed_at : a.received_at)).slice(0, 10);
     case TransactionActions.REPLACE_TRANSACTIONS:
-      return action.payload.sort((a, b) => b.height - a.height).slice(0, 10);
+      return action.payload.sort((a, b) => (b.confirmed_at ? b.confirmed_at : b.received_at) - (a.confirmed_at ? a.confirmed_at : a.received_at)).slice(0, 10);
     default:
       return state;
   }

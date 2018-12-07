@@ -37,6 +37,7 @@ export interface Transaction{
   orphan: number
   block: string
   confirmed_at: number
+  received_at: number
   rawtx: string
 }
 

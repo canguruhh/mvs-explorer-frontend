@@ -11,6 +11,7 @@ import { Block } from './../../models/block.model'
 import { Avatar } from './../../models/avatar.model'
 import { Certificate } from './../../models/certificate.model'
 import { Suggestions } from './../../models/suggestion.model'
+import { MiningPool } from './../../models/miningpool.model'
 
 interface ExplorerResponseStatus {
   success: boolean
@@ -68,6 +69,10 @@ export class ExplorerService {
 
   getSuggestions(search, limit): Observable<Suggestions> {
     return this.get('suggest/all/' + search + '?limit=' + (limit ? limit : '10')).map(response=>response)
+  }
+
+  getPoolStats(): Observable<MiningPool[]> {
+    return this.get('poolstats').map(response=>response)
   }
 
 }

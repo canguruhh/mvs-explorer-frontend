@@ -9,6 +9,7 @@ import { Block } from './../../models/block.model'
 export class BlockItemComponent implements OnInit {
 
   @Input() block: Block
+  @Input() pool: string
 
   constructor() { }
 

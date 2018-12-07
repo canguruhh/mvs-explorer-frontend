@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MomentModule } from 'ngx-moment';
 import { TranslateModule} from '@ngx-translate/core';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { TranslateModule} from '@ngx-translate/core';
     MatFormFieldModule,
     ReactiveFormsModule,
     TranslateModule,
+    TimeagoModule.forRoot(),
     RouterModule.forChild([
       {
         path: '',
