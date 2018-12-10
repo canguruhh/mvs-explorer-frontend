@@ -1,0 +1,47 @@
+<h2 class="headline">{{ 'AVATAR.INFO' | translate }}</h2>
+<div>
+  <ion-row>
+    <ion-col class="list-item-label">{{ 'AVATAR.SYMBOL' | translate }}</ion-col>
+    <ion-col class="list-item-value">{{ avatar.symbol }}</ion-col>
+  </ion-row>
+  <ion-row ng-hide="showAddressesHistory">
+    <ion-col class="list-item-label">{{ 'AVATAR.CURRENT_ADDRESS' | translate }}</ion-col>
+    <ion-col class="list-item-value address-mono">
+      <span routerLink="adr/{{avatar.address}}">{{avatar.address}}</span>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="showAddressesHistory" ng-repeat="update in avatar.updates | orderBy:'height':true">
+    <ion-col *ngIf="update.address == avatar.address" class="list-item-label">{{ 'AVATAR.CURRENT_ADDRESS' | translate }}</ion-col>
+    <ion-col *ngIf="update.address != avatar.address" class="list-item-label">{{ 'AVATAR.PREVIOUS_ADDRESS' | translate }}</ion-col>
+    <ion-col class="list-item-value">
+      <span class="address-mono" routerLink="adr/{{avatar.original_address}}">{{update.address}}</span>
+      <span routerLink="tx/{{update.issue_tx}}"> - {{ 'AVATAR.ADDRESS_FROM_HEIGHT' | translate }}{{update.height}} - {{update.confirmed_at * 1000| date}}</span>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="avatar.address!=avatar.original_address">
+    <ion-col class="list-item-label">{{ 'AVATAR.ORIGINAL_ADDRESS' | translate }}</ion-col>
+    <ion-col class="list-item-value">
+      <span class="address-mono" routerLink="adr/{{avatar.original_address}}">{{avatar.original_address}}</span>
+      <span *ngIf="showAddressesHistory" class="address-mono" routerLink="tx/{{update.issue_tx}}"> - {{ 'AVATAR.ADDRESS_FROM_HEIGHT' | translate }}{{avatar.height}} - {{avatar.confirmed_at * 1000| date}}</span>
+      <span *ngIf="!showAddressesHistory"> - {{ 'AVATAR.ADDRESS_FROM_HEIGHT' | translate }}{{avatar.height}} - {{avatar.confirmed_at * 1000| date}}</span>
+      <!--a *ngIf="!showAddressesHistory" ng-click="showAddressesHistory = true"><i class="fas fa-plus-circle"></i></a>
+      <a *ngIf="showAddressesHistory" ng-click="showAddressesHistory = false"><i class="fas fa-minus-circle"></i></a-->
+    </ion-col>
+  </ion-row>
+  <ion-row class="row">
+    <ion-col class="list-item-label">{{ 'AVATAR.CREATED_AT' | translate }}</ion-col>
+    <ion-col class="list-item-value">{{avatar.confirmed_at*1000 | date:'medium'}}</ion-col>
+  </ion-row>
+  <ion-row class="row">
+    <ion-col class="list-item-label">{{ 'AVATAR.CREATION_BLOCK' | translate }}</ion-col>
+    <ion-col class="list-item-value">
+      <span routerLink="blk/{{avatar.height}}">{{avatar.height}}</span>    
+    </ion-col>
+  </ion-row>
+  <ion-row class="row">
+    <ion-col class="list-item-label">{{ 'AVATAR.CREATION_TRANSACTION' | translate }}</ion-col>
+    <ion-col class="list-item-value hash-mono">
+      <span routerLink="tx/{{avatar.issue_tx}}">{{avatar.issue_tx}}</span>
+    </ion-col>
+  </ion-row>
+</div>

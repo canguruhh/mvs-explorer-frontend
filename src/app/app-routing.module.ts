@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'assets', redirectTo: 'msts', pathMatch: 'full' },
   { path: 'mits', loadChildren: './mits/mits.module#MitsPageModule' },
   { path: 'certs', loadChildren: './certificates/certificates.module#CertificatesPageModule' },
+  { path: 'avatar/:avatar', loadChildren: './avatar/avatar.module#AvatarPageModule' },
 ];
 
 @NgModule({

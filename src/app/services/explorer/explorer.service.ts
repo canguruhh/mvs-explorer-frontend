@@ -75,4 +75,8 @@ export class ExplorerService {
     return this.get('poolstats').map(response=>response)
   }
 
+  getAvatar(avatar): Observable<Avatar> {
+    return this.get('avatar/' + avatar)
+  }
+
 }
